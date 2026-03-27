@@ -1,13 +1,14 @@
 import cv2
 import numpy as np
+import math
 import time
 import unicodedata
 
 # =========================
 # SELETOR DE MODO DE SOM
 # =========================
-# 2 = notas musicais com winsound.Beep
-# 3 = notas musicais com sounddevice (onda senoidal, mais suave)
+# 2 = notas musicais com winsound.Beep (mais simples)
+# 3 = notas musicais com sounddevice (onda senoidal, som mais suave)
 SOUND_MODE = 3
 
 # =========================
@@ -30,7 +31,7 @@ except ImportError:
 WINDOW_NAME = "Leitor de cores - camera (ESC para sair)"
 
 # -------------------------------
-# TABELA DE CORES CSS3
+# TABELA DE CORES CSS3 (147 cores)
 # -------------------------------
 CSS3_COLORS = {
     '#F0F8FF': 'aliceblue', '#FAEBD7': 'antiquewhite', '#00FFFF': 'aqua', '#7FFFD4': 'aquamarine',
@@ -94,7 +95,7 @@ def closest_color_name(hex_code):
         g2 = int(hex_val[3:5], 16)
         b2 = int(hex_val[5:7], 16)
 
-        diff = (r - r2) ** 2 + (g - g2) ** 2 + (b - b2) ** 2
+        diff = (r - r2)**2 + (g - g2)**2 + (b - b2)**2
         if diff < min_diff:
             min_diff = diff
             closest = name
@@ -239,157 +240,68 @@ def translate_color_name(en_name: str) -> str:
 
 
 # ---------------------------
-# BGR -> HEX
+# SOM: mapeamento Hue → nota
 # ---------------------------
+NOTAS = [
+    261,  # C4
+    277,  # C#4
+    293,  # D4
+    311,  # D#4
+    329,  # E4
+    349,  # F4
+    369,  # F#4
+    392,  # G4
+    415,  # G#4
+    440,  # A4
+    466,  # A#4
+    494,  # B4
+]
+
+
 def bgr_to_hex(bgr):
     b, g, r = int(bgr[0]), int(bgr[1]), int(bgr[2])
     return f"#{r:02X}{g:02X}{b:02X}"
 
 
-# ---------------------------
-# BGR -> HSL
-# H: 0–360
-# S: 0–1
-# L: 0–1
-# ---------------------------
-def bgr_to_hsl(bgr):
-    b, g, r = [x / 255.0 for x in bgr]
-
-    cmax = max(r, g, b)
-    cmin = min(r, g, b)
-    delta = cmax - cmin
-
-    # Hue
-    if delta == 0:
-        h = 0.0
-    elif cmax == r:
-        h = (60 * ((g - b) / delta) + 360) % 360
-    elif cmax == g:
-        h = (60 * ((b - r) / delta) + 120) % 360
-    else:
-        h = (60 * ((r - g) / delta) + 240) % 360
-
-    # Lightness
-    l = (cmax + cmin) / 2.0
-
-    # Saturation
-    if delta == 0:
-        s = 0.0
-    else:
-        s = delta / (1 - abs(2 * l - 1))
-
-    return h, s, l
-
-
-# ---------------------------
-# SOM: mapeamento H -> nota
-# Agora com 3 oitavas (36 notas)
-# ---------------------------
-NOTAS = [
-    # Oitava 3
-    130, 138, 146, 155, 164, 174, 185, 196, 207, 220, 233, 246,
-
-    # Oitava 4
-    261, 277, 293, 311, 329, 349, 369, 392, 415, 440, 466, 494,
-
-    # Oitava 5
-    523, 554, 587, 622, 659, 698, 739, 784, 830, 880, 932, 987
-]
-
-
-def hue_from_bgr_hsl(bgr):
-    h, s, l = bgr_to_hsl(bgr)
-    return h, s, l
+def hue_from_bgr(bgr):
+    bgr_1x1 = np.uint8([[bgr]])
+    hsv = cv2.cvtColor(bgr_1x1, cv2.COLOR_BGR2HSV)[0, 0]
+    return int(hsv[0]), hsv  # devolvo hue e o próprio hsv
 
 
 def hue_to_note_freq(hue):
-    idx = int((hue / 360.0) * len(NOTAS))
+    idx = int((hue / 180.0) * len(NOTAS))
     if idx >= len(NOTAS):
         idx = len(NOTAS) - 1
     return NOTAS[idx]
 
 
-def play_note_winsound(freq, dur_ms=700):
+def play_note_winsound(freq, dur_ms=600):
     if HAS_WINSOUND:
         winsound.Beep(freq, dur_ms)
     else:
         print(f"(winsound indisponível) Nota ~{freq} Hz")
 
 
-"""def play_note_sounddevice(freq, dur=0.8):
+def play_note_sounddevice(freq, dur=0.6):
     if not HAS_SD:
         print(f"(sounddevice indisponível) Nota ~{freq} Hz")
         return
-
     sr = 44100
     t = np.linspace(0, dur, int(sr * dur), False)
     wave = 0.3 * np.sin(2 * np.pi * freq * t)
     sd.play(wave, sr)
     sd.wait()
-"""
-"""
-def play_note_sounddevice(freq, saturation, dur=0.6):
-    if not HAS_SD:
-        return
-
-    sr = 44100
-    t = np.linspace(0, dur, int(sr * dur), False)
-
-    base = np.sin(2 * np.pi * freq * t)
-    harmonic = np.sin(2 * np.pi * freq * 2 * t)
-
-    wave = 0.25 * base + (0.25 * saturation) * harmonic
-
-    sd.play(wave, sr)
-    sd.wait()
-"""
-
-def play_note_sounddevice(freq, saturation, lightness, dur):
-    #freq: frequência base (Hz) - definida pelo HUE
-    #saturation: 0.0 a 1.0 - controla timbre
-    #lightness: 0.0 a 1.0 - controla volume
-    
-    if not HAS_SD:
-        print(f"(sounddevice indisponível) Nota ~{freq} Hz")
-        return
-
-    sr = 44100
-    t = np.linspace(0, dur, int(sr * dur), False)
-
-    # ----- LUMINOSIDADE → VOLUME -----
-    # Evita silêncio absoluto e clipping
-    amplitude = 0.05 + 0.4 * lightness
-
-    # ----- SATURAÇÃO → TIMBRE -----
-    # Onda base (pura)
-    base = np.sin(2 * np.pi * freq * t)
-
-    # Harmônicos (enriquecem o som)
-    harmonic2 = np.sin(2 * np.pi * freq * 2 * t)
-    harmonic3 = np.sin(2 * np.pi * freq * 3 * t)
-
-    # Mistura harmônica controlada pela saturação
-    wave = (
-        base * (1.0 - saturation)
-        + harmonic2 * (0.6 * saturation)
-        + harmonic3 * (0.3 * saturation)
-    )
-
-    # Aplica volume
-    wave *= amplitude
-
-    sd.play(wave, sr)
-    sd.wait()
 
 
 def play_color_sound(bgr):
-    h, s, l = hue_from_bgr_hsl(bgr)
-    freq = hue_to_note_freq(h)
+    hue, _ = hue_from_bgr(bgr)
+    freq = hue_to_note_freq(hue)
 
     if SOUND_MODE == 2:
-        play_note_winsound(freq, dur_ms=700)
+        play_note_winsound(freq, dur_ms=700)  # um pouco mais longo
     elif SOUND_MODE == 3:
-        play_note_sounddevice(freq, s, l, dur=1)
+        play_note_sounddevice(freq, dur=0.6)
     else:
         print(f"SOUND_MODE inválido, freq ~{freq} Hz")
 
@@ -445,16 +357,16 @@ def main():
         if not ret:
             break
 
-        frame = cv2.resize(frame, (800, 800))
+        frame = cv2.resize(frame, (400, 400))
         frame_atual = frame
 
-        h_frame, w_frame, _ = frame.shape
-        placeholder = np.zeros((h_frame, 400, 3), dtype=np.uint8)
+        h, w, _ = frame.shape
+        placeholder = np.zeros((h, 400, 3), dtype=np.uint8)
 
         if mouse_inside:
             x, y = mouse_x, mouse_y
             bgr = frame[y, x]
-            h, s, l = hue_from_bgr_hsl(bgr)
+            hue, hsv = hue_from_bgr(bgr)
             hex_code = bgr_to_hex(bgr)
             name_en = closest_color_name(hex_code)
             name_pt = translate_color_name(name_en)
@@ -481,10 +393,10 @@ def main():
             )
             cv2.putText(
                 placeholder,
-                f"HSL: H={round(h,1)} S={round(s,2)} L={round(l,2)}",
+                f"HSV: {hsv.tolist()}",
                 (20, 120),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.63,
+                0.7,
                 (255, 255, 255),
                 1,
             )
@@ -502,7 +414,7 @@ def main():
                 f"Nome (EN): {sem_acentos(name_en)}",
                 (20, 200),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.65,
+                0.7,
                 (0, 200, 255),
                 1,
             )
@@ -511,7 +423,7 @@ def main():
                 f"Nome (PT): {sem_acentos(name_pt)}",
                 (20, 240),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.65,
+                0.7,
                 (0, 200, 255),
                 1,
             )

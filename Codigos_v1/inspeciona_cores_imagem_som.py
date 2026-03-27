@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import time
 import unicodedata
+import argparse, glob
 
 # =========================
 # SELETOR DE MODO DE SOM
@@ -327,8 +328,8 @@ def play_note_winsound(freq, dur_ms=700):
     sd.play(wave, sr)
     sd.wait()
 """
-"""
-def play_note_sounddevice(freq, saturation, dur=0.6):
+
+"""def play_note_sounddevice(freq, saturation, dur=0.6):
     if not HAS_SD:
         return
 
@@ -430,36 +431,41 @@ def on_mouse(event, x, y, flags, userdata):
 
 
 def main():
+
     global frame_atual
 
-    cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        print("Erro ao abrir a câmera.")
+    # 🔹 Caminho da imagem local
+    IMAGE_PATH = "./images/roda_cores_HSL_Sat05.png"
+
+    # 🔹 Carrega imagem
+    frame = cv2.imread(IMAGE_PATH)
+    if frame is None:
+        print("Erro ao carregar a imagem.")
         return
+
+    # 🔹 Redimensiona para manter o layout original
+    frame = cv2.resize(frame, (800, 800))
+    frame_atual = frame
 
     cv2.namedWindow(WINDOW_NAME)
     cv2.setMouseCallback(WINDOW_NAME, on_mouse)
 
     while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
-
-        frame = cv2.resize(frame, (800, 800))
-        frame_atual = frame
+        # Copiamos o frame para evitar desenhar permanentemente nele
+        frame_display = frame.copy()
 
         h_frame, w_frame, _ = frame.shape
-        placeholder = np.zeros((h_frame, 400, 3), dtype=np.uint8)
+        placeholder = np.zeros((h_frame, w_frame, 3), dtype=np.uint8)
 
         if mouse_inside:
             x, y = mouse_x, mouse_y
-            bgr = frame[y, x]
+            bgr = frame_display[y, x]
             h, s, l = hue_from_bgr_hsl(bgr)
             hex_code = bgr_to_hex(bgr)
             name_en = closest_color_name(hex_code)
             name_pt = translate_color_name(name_en)
 
-            cv2.circle(frame, (x, y), 4, (0, 255, 0), 1)
+            cv2.circle(frame_display, (x, y), 4, (0, 255, 0), 1)
 
             cv2.putText(
                 placeholder,
@@ -533,15 +539,12 @@ def main():
                 -1,
             )
 
-        combined = np.hstack((frame, placeholder))
+        combined = np.hstack((frame_display, placeholder))
         cv2.imshow(WINDOW_NAME, combined)
 
         if cv2.waitKey(1) & 0xFF == 27:
             break
-
-    cap.release()
     cv2.destroyAllWindows()
-
 
 if __name__ == "__main__":
     main()
