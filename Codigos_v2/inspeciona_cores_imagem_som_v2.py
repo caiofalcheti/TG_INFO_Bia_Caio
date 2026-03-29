@@ -373,7 +373,7 @@ def main():
 
     global frame_atual
 
-    # 🔹 Caminho da imagem local
+    #Caminho da imagem local
     IMAGE_PATH = "./images/roda_cores_HSL_Lum05.png"
 
     # 🔹 Carrega imagem
@@ -382,7 +382,6 @@ def main():
         print("Erro ao carregar a imagem.")
         return
 
-    # 🔹 Redimensiona para manter o layout original
     frame = cv2.resize(frame, (800, 800))
     frame_atual = frame
 
@@ -390,7 +389,7 @@ def main():
     cv2.setMouseCallback(WINDOW_NAME, on_mouse)
 
     while True:
-        # Copiamos o frame para evitar desenhar permanentemente nele
+        # Copiar frame para evitar desenhar permanentemente nele
         frame_display = frame.copy()
 
         h_frame, w_frame, _ = frame.shape
