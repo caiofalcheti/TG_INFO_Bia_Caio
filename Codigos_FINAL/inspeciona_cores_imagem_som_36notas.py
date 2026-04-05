@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import time
 import unicodedata
-import argparse, glob
 import matplotlib.pyplot as plt
 import sounddevice as sd
 

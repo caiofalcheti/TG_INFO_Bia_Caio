@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import time
 import unicodedata
-import argparse, glob
 import matplotlib.pyplot as plt
 import sounddevice as sd
 
@@ -278,7 +277,7 @@ NOTAS = [
     # Oitava 4
     (261, "C4"), (277, "C#4"), (293, "D4"), (311, "D#4"),
     (329, "E4"), (349, "F4"), (369, "F#4"), (392, "G4"),
-    (415, "G#4"), (440, "A4"), (466, "A#4"), (494, "B4"),
+    (415, "G#4"), (440, "A4"), (466, "A#4"), (494, "B4")
 ]
 
 # -------------------------------
