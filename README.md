@@ -45,7 +45,8 @@ O repositório contém **quatro versões do código**, organizadas a partir de d
 Essas versões utilizam **12 frequências**, correspondentes às notas da **4ª oitava musical**.  
 São mais simples do ponto de vista perceptual e adequadas para testes iniciais ou uso introdutório.
 
-#### [./Codigos_FINAL/inspeciona_cores_imagem_som_12notas.py](inspeciona_cores_imagem_som_12notas.py)
+#### [inspeciona_cores_imagem_som_12notas.py](Codigos_FINAL/inspeciona_cores_imagem_som_12notas.py)
+
 
 **Entrada:** imagem estática  
 
