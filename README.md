@@ -1,2 +1,150 @@
-# TG_INFO_Bia_Caio
-Esse repositório foi criado para o compartilhamento de códigos e versões do desenvolvimento do trabalho de graduação do curso de Engenharia de Informação dos alunos Beatriz Grassi Pereira e Caio Henrique Nunes
+
+# Mapeamento de Componentes Cromáticos em Sinais Sonoros Audíveis
+
+Este repositório reúne o **Trabalho de Graduação** e **quatro versões funcionais de um sistema de sonificação de cores**, desenvolvidos por **Beatriz Grassi Pereira** e **Caio Henrique Falcheti Nunes**, no curso de **Engenharia de Informação da Universidade Federal do ABC (UFABC)**.
+
+O projeto propõe um método de **conversão de cores em sons audíveis**, estabelecendo uma correspondência consistente entre atributos cromáticos e parâmetros sonoros, com aplicações em **acessibilidade**, **comunicação multimodal**, **educação** e **arte sonora**.
+
+---
+
+## 📄 Trabalho Acadêmico
+
+- **`TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf`**  
+  **Mapeamento de componentes cromáticos em sinais sonoros audíveis**  
+  Universidade Federal do ABC – UFABC  
+  Santo André – SP – Abril/2026  
+  **Orientador:** Prof. Dr. Kenji Nose Filho
+
+### Resumo
+O trabalho apresenta uma aplicação capaz de capturar informações cromáticas (a partir de imagens ou webcam), converter essas cores para o modelo HSL e mapear seus atributos em sinais sonoros audíveis.  
+A proposta estabelece as seguintes correspondências principais:
+
+- **Matiz (Hue)** → frequência / nota musical  
+- **Saturação (S)** → timbre (presença de harmônicos)  
+- **Luminosidade (L)** → intensidade sonora (volume)
+
+---
+
+## 💻 Estrutura do Repositório
+
+O repositório contém **quatro versões do código**, organizadas a partir de duas dimensões:
+
+- **Tipo de entrada**
+  - Imagem estática
+  - Captura por webcam
+- **Resolução do mapeamento sonoro**
+  - 12 notas (1 oitava)
+  - 36 notas (3 oitavas)
+
+---
+
+## 🎵 🎨 Versões do Código
+
+### ▶️ Versões com **12 Notas Musicais (1 Oitava)**
+
+Essas versões utilizam **12 frequências**, correspondentes às notas da **4ª oitava musical**.  
+São mais simples do ponto de vista perceptual e adequadas para testes iniciais ou uso introdutório.
+
+#### 📌 `inspeciona_cores_imagem_som_12notas.py`
+**Entrada:** imagem estática  
+
+**Características:**
+- Leitura de arquivos de imagem
+- Captura da cor do pixel sob o cursor
+- Conversão BGR → HSL e HEX
+- Exibição:
+  - Valores cromáticos
+  - Código hexadecimal
+  - Nome aproximado da cor
+- Reproduz o som ao clique do mouse
+- Gera gráficos das formas de onda
+
+**Uso recomendado:**  
+Testes controlados, escalas cromáticas e validação conceitual.
+
+---
+
+#### 📌 `inspeciona_cores_camera_som_12notas.py`
+**Entrada:** captura em tempo real via webcam  
+
+**Características:**
+- Captura contínua de vídeo
+- Inspeção de cor sob o cursor
+- Sonificação em tempo real
+- Sensível a variações de iluminação
+- Mapeamento simples (12 notas)
+
+**Uso recomendado:**  
+Demonstrações rápidas e experimentos em ambientes reais.
+
+---
+
+### ▶️ Versões com **36 Notas Musicais (3 Oitavas)**
+
+Essas versões utilizam **36 frequências**, distribuídas pelas **3ª, 4ª e 5ª oitavas**, oferecendo **maior resolução cromática-sonora**.
+
+#### 📌 `inspeciona_cores_imagem_som_36notas.py`
+**Entrada:** imagem estática  
+
+**Características:**
+- Leitura de imagens a partir de arquivo
+- Conversão detalhada de cor
+- Mapeamento cromático com maior discriminação sonora
+- Reprodução de som + visualização das componentes da onda
+- Interface gráfica com informações completas
+
+**Uso recomendado:**  
+Análises comparativas, testes perceptuais e experimentos acadêmicos.
+
+---
+
+#### 📌 `inspeciona_cores_camera_som_36notas.py`
+**Entrada:** captura em tempo real via webcam  
+
+**Características:**
+- Conversão dinâmica de cores em som
+- Maior sensibilidade a pequenas variações cromáticas
+- Sons distribuídos em múltiplas oitavas
+- Permite distinguir tons cromáticos próximos
+
+**Uso recomendado:**  
+Exploração interativa, aplicações artísticas e estudos avançados de sonificação.
+
+---
+
+## 🔬 Estratégia de Mapeamento Cromático-Sonoro
+
+| Atributo Visual | Parâmetro Sonoro |
+|-----------------|------------------|
+| Matiz (Hue) | Frequência / Nota musical |
+| Saturação (S) | Timbre (harmônicos) |
+| Luminosidade (L) | Volume (amplitude) |
+
+- Cores mais saturadas → sons com maior complexidade harmônica  
+- Cores mais claras → sons mais intensos  
+- Tons próximos ao preto → sons de baixa amplitude  
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- **Python 3**
+- **OpenCV (cv2)** – processamento e captura de imagens
+- **NumPy** – manipulação numérica
+- **Matplotlib** – visualização das formas de onda
+- **SoundDevice** – síntese e reprodução sonora
+
+---
+
+## ▶️ Como Executar
+
+1. Instale as dependências:
+   ```bash
+   pip install opencv-python numpy matplotlib sounddevice
+2. Execute uma das versões:
+   python inspeciona_cores_camera_som_12notas.py
+   python inspeciona_cores_imagem_som_12notas.py
+   python inspeciona_cores_camera_som_36notas.py
+   python inspeciona_cores_imagem_som_36notas.py
+3. Posicione o cursor sobre a cor desejada e clique com o botão esquerdo do mouse
+4. Pressione ESC para encerrar o programa
