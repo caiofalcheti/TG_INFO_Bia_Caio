@@ -149,7 +149,7 @@ No vídeo é possível observar:
 
 [![Demonstração do sistema de mapeamento cromático-sonoro](https://img.youtube.com/vi/bMO6mAAcVAg/0.jpg)](https://www.youtube.com/watch?v=bMO6mAAcVAg)
 
-👉 Clique na imagem acima para assistir ao vídeo no YouTube.
+Clique na imagem acima para assistir ao vídeo no YouTube.
 
 Este vídeo complementa a documentação do projeto e ilustra, de forma visual e auditiva, os conceitos apresentados no Trabalho de Graduação e nas implementações em Python.
 
