@@ -9,7 +9,7 @@ O projeto propõe um método de **conversão de cores em sons audíveis**, estab
 
 ## Trabalho de Graduação
 
-- ** [TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf](Trabalho de Graduação/TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf)**  
+- [TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf](Trabalho de Graduação/TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf)
   **Mapeamento de componentes cromáticos em sinais sonoros audíveis**  
   Universidade Federal do ABC – UFABC  
   Santo André – SP – Abril/2026  
