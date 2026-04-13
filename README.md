@@ -136,6 +136,25 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
 
 ---
 
+## Vídeo de Demonstração
+
+Abaixo está um vídeo curto demonstrando o funcionamento do sistema desenvolvido neste projeto.
+
+No vídeo é possível observar:
+- A interface gráfica do programa em execução
+- A inspeção de cores a partir do cursor
+- A conversão dos parâmetros cromáticos (HSL)
+- A reprodução do som correspondente à cor selecionada
+- A visualização das formas de onda geradas
+
+[![Demonstração do sistema de mapeamento cromático-sonoro](https://img.youtube.com/vi/bMO6mAAcVAg/0.jpg)](https://www.youtube.com/watch?v=bMO6mAAcVAg)
+
+👉 Clique na imagem acima para assistir ao vídeo no YouTube.
+
+Este vídeo complementa a documentação do projeto e ilustra, de forma visual e auditiva, os conceitos apresentados no Trabalho de Graduação e nas implementações em Python.
+
+---
+
 ## Como Executar
 
 1. Instale as dependências:
