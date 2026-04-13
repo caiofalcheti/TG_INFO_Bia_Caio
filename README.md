@@ -153,10 +153,18 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
 ---
 ## Observações Importantes
 
-O comportamento sonoro depende do equipamento de áudio
-Versões com webcam são sensíveis à iluminação ambiente
-O código é modular, permitindo:
+- O comportamento sonoro depende do equipamento de áudio
+- Versões com webcam são sensíveis à iluminação ambiente
+- O código é modular, permitindo:
+-- Alterar número de notas
+-- Modificar faixas de frequência
+-- Adaptar os mapeamentos cromático-sonoros
 
-Alterar número de notas
-Modificar faixas de frequência
-Adaptar os mapeamentos cromático-sonoros
+---
+## Autores
+
+Beatriz Grassi Pereira
+Caio Henrique Falcheti Nunes
+
+Universidade Federal do ABC – UFABC
+Bacharelado em Engenharia de Informação
