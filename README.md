@@ -45,7 +45,7 @@ O repositório contém **quatro versões do código**, organizadas a partir de d
 Essas versões utilizam **12 frequências**, correspondentes às notas da **4ª oitava musical**.  
 São mais simples do ponto de vista perceptual e adequadas para testes iniciais ou uso introdutório.
 
-#### `[inspeciona_cores_imagem_som_12notas.py](Codigos_FINAL/inspeciona_cores_imagem_som_12notas.py)`
+#### [inspeciona_cores_imagem_som_12notas.py](Codigos_FINAL/inspeciona_cores_imagem_som_12notas.py)
 
 
 **Entrada:** imagem estática  
@@ -66,7 +66,7 @@ Testes controlados, escalas cromáticas e validação conceitual.
 
 ---
 
-#### `inspeciona_cores_camera_som_12notas.py`
+#### [inspeciona_cores_camera_som_12notas.py](Codigos_FINAL/inspeciona_cores_camera_som_12notas.py)
 **Entrada:** captura em tempo real via webcam  
 
 **Características:**
@@ -85,7 +85,7 @@ Demonstrações rápidas e experimentos em ambientes reais.
 
 Essas versões utilizam **36 frequências**, distribuídas pelas **3ª, 4ª e 5ª oitavas**, oferecendo **maior resolução cromática-sonora**.
 
-#### `inspeciona_cores_imagem_som_36notas.py`
+#### [inspeciona_cores_imagem_som_36notas.py](Codigos_FINAL/inspeciona_cores_imagem_som_36notas.py)
 **Entrada:** imagem estática  
 
 **Características:**
@@ -100,7 +100,7 @@ Análises comparativas, testes perceptuais e experimentos acadêmicos.
 
 ---
 
-#### `inspeciona_cores_camera_som_36notas.py`
+#### [inspeciona_cores_camera_som_36notas.py](Codigos_FINAL/inspeciona_cores_camera_som_36notas.py)
 **Entrada:** captura em tempo real via webcam  
 
 **Características:**
