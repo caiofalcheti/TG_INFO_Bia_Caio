@@ -179,6 +179,8 @@ def translate_color_name(en_name: str) -> str:
         "cyan": "ciano",
         "magenta": "magenta",
         "coral": "coral",
+        "turquoise": "turquesa",
+        "orchid": "orquidea"
     }
 
     MODIFIER_PT = {

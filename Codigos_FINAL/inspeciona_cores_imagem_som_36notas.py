@@ -151,7 +151,7 @@ def translate_color_name(en_name: str) -> str:
         "skyblue": "azul céu",
         "navy": "azul marinho",
         "olive": "verde oliva",
-        "gold": "dourado",
+        "gold": "dourado"
     }
     if name in especiais:
         return especiais[name]
@@ -179,6 +179,8 @@ def translate_color_name(en_name: str) -> str:
         "cyan": "ciano",
         "magenta": "magenta",
         "coral": "coral",
+        "turquoise": "turquesa",
+        "orchid": "orquidea"
     }
 
     MODIFIER_PT = {
@@ -189,7 +191,7 @@ def translate_color_name(en_name: str) -> str:
         "pale": "pálido",
         "royal": "royal",
         "hot": "vivo",
-        "soft": "suave",
+        "soft": "suave"
     }
 
     tokens = []
@@ -288,7 +290,7 @@ NOTAS = [
     # Oitava 5
     (523, "C5"), (554, "C#5"), (587, "D5"), (622, "D#5"),
     (659, "E5"), (698, "F5"), (739, "F#5"), (784, "G5"),
-    (830, "G#5"), (880, "A5"), (932, "A#5"), (987, "B5"),
+    (830, "G#5"), (880, "A5"), (932, "A#5"), (987, "B5")
 ]
 
 # -------------------------------
@@ -437,7 +439,7 @@ def main():
     global current_frame
 
     #Caminho da imagem local
-    IMAGE_PATH = "./images/roda_cores_HSL_Sat05.png"
+    IMAGE_PATH = "./images/roda_cores_HSL_Lum05.png"
 
     #Carrega imagem
     frame = cv2.imread(IMAGE_PATH)

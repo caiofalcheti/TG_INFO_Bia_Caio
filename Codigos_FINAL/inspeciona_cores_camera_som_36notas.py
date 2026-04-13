@@ -181,6 +181,8 @@ def translate_color_name(en_name: str) -> str:
         "cyan": "ciano",
         "magenta": "magenta",
         "coral": "coral",
+        "turquoise": "turquesa",
+        "orchid": "orquidea"
     }
 
     MODIFIER_PT = {
@@ -290,7 +292,7 @@ NOTAS = [
     # Oitava 5
     (523, "C5"), (554, "C#5"), (587, "D5"), (622, "D#5"),
     (659, "E5"), (698, "F5"), (739, "F#5"), (784, "G5"),
-    (830, "G#5"), (880, "A5"), (932, "A#5"), (987, "B5"),
+    (830, "G#5"), (880, "A5"), (932, "A#5"), (987, "B5")
 ]
 
 # -------------------------------
