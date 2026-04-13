@@ -1,13 +1,13 @@
 
 # Mapeamento de Componentes Cromáticos em Sinais Sonoros Audíveis
 
-Este repositório reúne o **Trabalho de Graduação** e **quatro versões funcionais de um sistema de sonificação de cores**, desenvolvidos por **Beatriz Grassi Pereira** e **Caio Henrique Falcheti Nunes**, no curso de **Engenharia de Informação da Universidade Federal do ABC (UFABC)**.
+Este repositório reúne o **Trabalho de Graduação** e **quatro versões funcionais de um sistema de sonificação de cores**, desenvolvidos por **Beatriz Grassi Pereira** e **Caio Henrique Falcheti Nunes**, no **Bacharelado de Engenharia de Informação da Universidade Federal do ABC (UFABC)**.
 
 O projeto propõe um método de **conversão de cores em sons audíveis**, estabelecendo uma correspondência consistente entre atributos cromáticos e parâmetros sonoros, com aplicações em **acessibilidade**, **comunicação multimodal**, **educação** e **arte sonora**.
 
 ---
 
-## 📄 Trabalho Acadêmico
+## Trabalho de Graduação
 
 - **`TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf`**  
   **Mapeamento de componentes cromáticos em sinais sonoros audíveis**  
@@ -25,7 +25,7 @@ A proposta estabelece as seguintes correspondências principais:
 
 ---
 
-## 💻 Estrutura do Repositório
+## Estrutura do Repositório
 
 O repositório contém **quatro versões do código**, organizadas a partir de duas dimensões:
 
@@ -38,14 +38,14 @@ O repositório contém **quatro versões do código**, organizadas a partir de d
 
 ---
 
-## 🎵 🎨 Versões do Código
+## Versões do Código
 
-### ▶️ Versões com **12 Notas Musicais (1 Oitava)**
+### Versões com **12 Notas Musicais (1 Oitava)**
 
 Essas versões utilizam **12 frequências**, correspondentes às notas da **4ª oitava musical**.  
 São mais simples do ponto de vista perceptual e adequadas para testes iniciais ou uso introdutório.
 
-#### 📌 `inspeciona_cores_imagem_som_12notas.py`
+#### `inspeciona_cores_imagem_som_12notas.py`
 **Entrada:** imagem estática  
 
 **Características:**
@@ -64,7 +64,7 @@ Testes controlados, escalas cromáticas e validação conceitual.
 
 ---
 
-#### 📌 `inspeciona_cores_camera_som_12notas.py`
+#### `inspeciona_cores_camera_som_12notas.py`
 **Entrada:** captura em tempo real via webcam  
 
 **Características:**
@@ -79,11 +79,11 @@ Demonstrações rápidas e experimentos em ambientes reais.
 
 ---
 
-### ▶️ Versões com **36 Notas Musicais (3 Oitavas)**
+### Versões com **36 Notas Musicais (3 Oitavas)**
 
 Essas versões utilizam **36 frequências**, distribuídas pelas **3ª, 4ª e 5ª oitavas**, oferecendo **maior resolução cromática-sonora**.
 
-#### 📌 `inspeciona_cores_imagem_som_36notas.py`
+#### `inspeciona_cores_imagem_som_36notas.py`
 **Entrada:** imagem estática  
 
 **Características:**
@@ -98,7 +98,7 @@ Análises comparativas, testes perceptuais e experimentos acadêmicos.
 
 ---
 
-#### 📌 `inspeciona_cores_camera_som_36notas.py`
+#### `inspeciona_cores_camera_som_36notas.py`
 **Entrada:** captura em tempo real via webcam  
 
 **Características:**
@@ -112,7 +112,7 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
 
 ---
 
-## 🔬 Estratégia de Mapeamento Cromático-Sonoro
+## Estratégia de Mapeamento Cromático-Sonoro
 
 | Atributo Visual | Parâmetro Sonoro |
 |-----------------|------------------|
@@ -126,7 +126,7 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
 
 ---
 
-## 🛠 Tecnologias Utilizadas
+## Programa e Bibliotecas Utilizadas
 
 - **Python 3**
 - **OpenCV (cv2)** – processamento e captura de imagens
@@ -136,7 +136,7 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
 
 ---
 
-## ▶️ Como Executar
+## Como Executar
 
 1. Instale as dependências:
    ```bash
@@ -149,3 +149,14 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
    python inspeciona_cores_imagem_som_36notas.py
 4. Posicione o cursor sobre a cor desejada e clique com o botão esquerdo do mouse
 5. Pressione ESC para encerrar o programa
+
+---
+## Observações Importantes
+
+O comportamento sonoro depende do equipamento de áudio
+Versões com webcam são sensíveis à iluminação ambiente
+O código é modular, permitindo:
+
+Alterar número de notas
+Modificar faixas de frequência
+Adaptar os mapeamentos cromático-sonoros
