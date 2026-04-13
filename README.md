@@ -142,9 +142,10 @@ Exploração interativa, aplicações artísticas e estudos avançados de sonifi
    ```bash
    pip install opencv-python numpy matplotlib sounddevice
 2. Execute uma das versões:
+    ```bash
    python inspeciona_cores_camera_som_12notas.py
    python inspeciona_cores_imagem_som_12notas.py
    python inspeciona_cores_camera_som_36notas.py
    python inspeciona_cores_imagem_som_36notas.py
-3. Posicione o cursor sobre a cor desejada e clique com o botão esquerdo do mouse
-4. Pressione ESC para encerrar o programa
+4. Posicione o cursor sobre a cor desejada e clique com o botão esquerdo do mouse
+5. Pressione ESC para encerrar o programa
