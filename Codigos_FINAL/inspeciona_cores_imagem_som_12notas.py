@@ -25,13 +25,13 @@ CSS3_COLORS = {
     '#FFEBCD': 'blanchedalmond', '#0000FF': 'blue', '#8A2BE2': 'blueviolet', '#A52A2A': 'brown',
     '#DEB887': 'burlywood', '#5F9EA0': 'cadetblue', '#7FFF00': 'chartreuse', '#D2691E': 'chocolate',
     '#FF7F50': 'coral', '#6495ED': 'cornflowerblue', '#FFF8DC': 'cornsilk', '#DC143C': 'crimson',
-    '#00FFFF': 'cyan', '#00008B': 'darkblue', '#008B8B': 'darkcyan', '#B8860B': 'darkgoldenrod',
+    '#00008B': 'darkblue', '#008B8B': 'darkcyan', '#B8860B': 'darkgoldenrod',
     '#A9A9A9': 'darkgray', '#006400': 'darkgreen', '#BDB76B': 'darkkhaki', '#8B008B': 'darkmagenta',
     '#556B2F': 'darkolivegreen', '#FF8C00': 'darkorange', '#9932CC': 'darkorchid', '#8B0000': 'darkred',
     '#E9967A': 'darksalmon', '#8FBC8F': 'darkseagreen', '#483D8B': 'darkslateblue', '#2F4F4F': 'darkslategray',
     '#00CED1': 'darkturquoise', '#9400D3': 'darkviolet', '#FF1493': 'deeppink', '#00BFFF': 'deepskyblue',
     '#1E90FF': 'dodgerblue', '#B22222': 'firebrick', '#FFFAF0': 'floralwhite', '#228B22': 'forestgreen',
-    '#FF00FF': 'fuchsia', '#DCDCDC': 'gainsboro', '#F8F8FF': 'ghostwhite', '#FFD700': 'gold',
+    '#DCDCDC': 'gainsboro', '#F8F8FF': 'ghostwhite', '#FFD700': 'gold',
     '#DAA520': 'goldenrod', '#808080': 'gray', '#008000': 'green', '#ADFF2F': 'greenyellow',
     '#F0FFF0': 'honeydew', '#FF69B4': 'hotpink', '#CD5C5C': 'indianred', '#4B0082': 'indigo',
     '#FFFFF0': 'ivory', '#F0E68C': 'khaki', '#E6E6FA': 'lavender', '#FFF0F5': 'lavenderblush',
@@ -67,7 +67,9 @@ def sem_acentos(s: str) -> str:
     nf = unicodedata.normalize("NFD", s)
     return "".join(c for c in nf if unicodedata.category(c) != "Mn")
 
-
+# -------------------------------
+# Define o nome da cor mais próximo a partir do hex
+# -------------------------------
 def closest_color_name(hex_code):
     r = int(hex_code[1:3], 16)
     g = int(hex_code[3:5], 16)
