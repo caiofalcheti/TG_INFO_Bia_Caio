@@ -16,7 +16,7 @@ O projeto propõe um método de **conversão de cores em sons audíveis**, estab
   **Orientador:** Prof. Dr. Kenji Nose Filho
   
 **Trabalho de Graduação (PDF):**  
-https://github.com/caiofalcheti/TG_INFO_Bia_Caio/blob/main/Trabalho%20de%20Gradua%C3%A7%C3%A3o/TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v4.pdf
+https://github.com/caiofalcheti/TG_INFO_Bia_Caio/blob/main/Trabalho%20de%20Gradua%C3%A7%C3%A3o/TGIII_EngInfo_BeatrizGrassi_CaioNunes_Abril2026_v5.pdf
 
 ### Resumo
 O trabalho apresenta uma aplicação capaz de capturar informações cromáticas (a partir de imagens ou webcam), converter essas cores para o modelo HSL e mapear seus atributos em sinais sonoros audíveis.  
